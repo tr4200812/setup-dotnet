@@ -101,9 +101,11 @@ export class DotnetVersionResolver {
       allowRetries: true,
       maxRetries: 3
     });
+
     const response = await httpClient.getJson<any>(
       DotnetVersionResolver.DotnetCoreIndexUrl
     );
+
     const result = response.result || {};
     const releasesInfo: any[] = result['releases-index'];
 
@@ -122,7 +124,7 @@ export class DotnetVersionResolver {
   }
 
   static DotnetCoreIndexUrl =
-    'https://dotnetcli.azureedge.net/dotnet/release-metadata/releases-index.json';
+    'https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json';
 }
 
 export class DotnetInstallScript {
